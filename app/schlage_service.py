@@ -69,7 +69,9 @@ class SchlageService:
             auth = Auth(username, password)
             self._schlage = Schlage(auth)
         except Exception as exc:  # pragma: no cover - best-effort safety
-            raise SchlageServiceError(f"Failed to initialize Schlage client: {exc}") from exc
+            raise SchlageServiceError(
+                f"Failed to initialize Schlage client: {exc}"
+            ) from exc
 
     # ---------- Internal helpers ----------
     def _fetch_locks(self) -> List[Any]:
@@ -107,7 +109,10 @@ class SchlageService:
 
         locks = self._fetch_locks()
         for lock in locks:
-            if getattr(lock, "device_id", None) == device_id or getattr(lock, "id", None) == device_id:
+            if (
+                getattr(lock, "device_id", None) == device_id
+                or getattr(lock, "id", None) == device_id
+            ):
                 return lock
         raise SchlageServiceError("Lock not found")
 
@@ -264,7 +269,9 @@ class SchlageService:
             # Step 2: Attempt to access the codes attribute
             codes_attr = getattr(lock, "access_codes", None)
             if codes_attr is None:
-                raise SchlageServiceError("Access codes attribute not found on lock object.")
+                raise SchlageServiceError(
+                    "Access codes attribute not found on lock object."
+                )
 
             if isinstance(codes_attr, dict):
                 data_source = codes_attr.values()
@@ -292,7 +299,9 @@ class SchlageService:
                     schedule_payload = None
                 else:
                     schedule_payload = {
-                        "start": _serialize_datetime(getattr(schedule_obj, "start", None)),
+                        "start": _serialize_datetime(
+                            getattr(schedule_obj, "start", None)
+                        ),
                         "end": _serialize_datetime(getattr(schedule_obj, "end", None)),
                     }
 

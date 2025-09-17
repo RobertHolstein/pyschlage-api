@@ -57,10 +57,7 @@ def list_locks() -> List[Dict[str, Any]]:
         locks = service.list_locks()
     except SchlageServiceError as exc:
         raise HTTPException(status_code=500, detail=str(exc))
-    return [
-        {"device_id": item.device_id, "name": item.name}
-        for item in locks
-    ]
+    return [{"device_id": item.device_id, "name": item.name} for item in locks]
 
 
 @app.get("/locks/{device_id}")
