@@ -1,0 +1,27 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+.Python
+build/
+dist/
+*.egg-info/
+
+# Virtual environments
+venv/
+.venv/
+
+# Environment files
+.env
+
+# IDE/editor
+.vscode/
+.idea/
+
+# Project AI documentation (not needed in VCS)
+ai_docs/
+AGENTS.md
+debug*
+repomix*

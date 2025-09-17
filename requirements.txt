@@ -1,0 +1,4 @@
+fastapi
+uvicorn[standard]
+pyschlage==2024.2.0
+python-dotenv
